@@ -11,15 +11,9 @@ async def home():
 
 
 @app.get("/get")
-async def get_price(url: str):
+async def get(url: str):
     url_scraper = Scraper(url)
     url_scraper.scrape()
 
-    return{"price": url_scraper.price}
+    return{"price": url_scraper.price,"OutOfStock":url_scraper.OutOfStock}
 
-
-@app.get("/check")
-async def check_stock(url: str):
-    url_scraper = Scraper(url)
-    url_scraper.scrape()
-    return {"OutOfStock": url_scraper.OutOfStock}
