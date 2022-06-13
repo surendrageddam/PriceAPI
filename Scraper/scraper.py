@@ -24,7 +24,7 @@ class Scraper:
         elif 'www.ajio.com' in self.url:
             self.price = int(json.loads(soup.find_all('script')[6].string)[
                 'offers']['price'])
-            self.OutOfStock = json.loads(soup.find_all('script')[6].string)[
-                'offers']['availability'] != "https://schema.org/InStock" and "https://schema.org/LimitedAvailability"
+            self.OutOfStock != json.loads(soup.find_all('script')[6].string)[
+                'offers']['availability'] == "https://schema.org/InStock" or "https://schema.org/LimitedAvailability"
         else:
             raise Exception('URL is invalid')
