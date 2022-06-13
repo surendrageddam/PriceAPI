@@ -15,7 +15,7 @@ class Scraper:
 
     def scrape(self):
         page = Scraper.re_session.get(self.url,headers=Scraper.headers)
-        soup = BeautifulSoup(page.text, "lxml")
+        soup = BeautifulSoup(page.text, "html.parser")
         if 'www.myntra.com' in self.url:
             self.price = int(json.loads(soup.find_all('script')[1].string)[
                 'offers']['price'])
